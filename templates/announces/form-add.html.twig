@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetBuddy{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        {% for message in app.flashes('announces_add_success') %}
+            <div class="alert alert-success" role="alert">
+            Felicitation!! {{ message }}
+    </div>
+        {% endfor %}
+
+    {{ form_start(formAnnonces)}}
+        <div class="row">
+            {{form_label(formAnnonces.title, 'Titre')}}
+            {{form_widget(formAnnonces.title)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.content, 'Description')}}
+            {{form_widget(formAnnonces.content)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.animalType, 'Type D\'animal')}}
+            {{form_widget(formAnnonces.animalType)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.weight, 'Poid de l\'Animal')}}
+            {{form_widget(formAnnonces.weight)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.imageProfil, 'Photo Profil')}}
+            {{form_widget(formAnnonces.imageProfil)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.city, 'Ville')}}
+            {{form_widget(formAnnonces.city)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.zipCode, 'Code Postal')}}
+            {{form_widget(formAnnonces.zipCode)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.price, 'Tarif')}}
+            {{form_widget(formAnnonces.price)}}
+        </div>
+        <div class="row">
+            {{form_label(formAnnonces.availabilityDate, 'Disponibilité')}}
+            {{form_widget(formAnnonces.availabilityDate)}}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success btn-sm mb-1">Enregistrer</button>
+    {{ form_end(formAnnonces)}}
+
+{% endblock %}

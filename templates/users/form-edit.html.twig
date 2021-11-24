@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetBuddy{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+    {{ dump(app.user.username) }}
+    {% endif %}
+
+    {% for message in app.flashes('users_edit_success') %}
+    <div class="alert alert-success" role="alert">
+    Congratulation!! {{ message }}
+    </div>
+    {% endfor %}
+
+    <h1> Modifier un Membre</h1> 
+
+    {{ form_start(formUsers)}}
+        <div class="row">
+            {{form_label(formUsers.firstName, 'Prénom')}}
+            {{form_widget(formUsers.firstName)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.lastName, 'Nom')}}
+            {{form_widget(formUsers.lastName)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.birthDate, 'Date de Naissance')}}
+            {{form_widget(formUsers.birthDate)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.email, 'Email')}}
+            {{form_widget(formUsers.email)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.password, 'Mot de passe')}}
+            {{form_widget(formUsers.password)}}
+        </div>
+
+        {% if is_granted('ROLE_PETSITTER') %}
+            <div class="row">
+                {{form_label(formUsers.profilImage, 'Photo Profil')}}
+                {{form_widget(formUsers.profilImage)}}
+            </div>
+        {% endif %}
+        
+        <div class="row">
+            {{form_label(formUsers.animalType, 'Type D\'animal')}}
+            {{form_widget(formUsers.animalType)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.city, 'Ville')}}
+            {{form_widget(formUsers.city)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.zipCode, 'Code Postal')}}
+            {{form_widget(formUsers.zipCode)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.agreeTerms)}}
+            {{form_widget(formUsers.agreeTerms)}}
+        <div class="row">
+            {{form_label(formUsers.rgpd)}}
+            {{form_widget(formUsers.rgpd)}}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success btn-sm mb-1">Modifier</button>
+    {{ form_end(formUsers)}}
+
+{% endblock %}

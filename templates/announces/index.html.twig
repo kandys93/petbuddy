@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+        <h1>Profil Pet Sitter Annonce</h1>
+
+{% for message in app.flashes('announces_add_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_edit_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_delete_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+
+{% if app.user %}
+  {{ dump(app.user.username) }}
+{% endif %}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type d'animal</th>
+            <th scope="col">Poids de l'animal</th>
+            <th scope="col">Photo Profil</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Prix</th>
+            {# <th scope="col">availabilityDate</th>
+            <th scope="col">contactMessages</th> #}
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for annonce in annonces %}
+            <tr>
+            <th scope="row"> {{ annonce.id }} </th>
+            <td> {{ annonce.title }} </td>
+            <td> {{ annonce.content }} </td>
+            <td> {{ annonce.animalType }} </td>
+            <td> {{ annonce.weight }} </td>
+            <td> {{ annonce.imageProfil }} </td>
+            <td> {{ annonce.city }} </td>
+            <td> {{ annonce.zipCode }} </td>
+            <td> {{ annonce.price }} </td>
+            {# <td> {{ annonce.availabilityDate }} </td> #}
+            {# <td> {{ annonce.contactMessages }} </td> #}
+            <td>
+                <a href="{{ path('annonces_annonces_edit', {id: annonce.id}) }}" class="btn btn-secondary btn-sm mr-3">Modifier</a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('annonces_annonces_delete', {id: annonce.id}) }}" onclick="return confirm('Do you really want to delete it?')" class="btn btn-secondary btn-sm mr-3">Supprimer</a>
+                {% endif %}
+
+                <a href="{{ path('annonces_annonces_detail', {id: annonce.id}) }}" class="btn btn-secondary btn-sm mr-3">Afficher</a>
+            </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <br>
+
+    <a href="{{ path('annonces_index') }}" type="button" class="btn btn-warning">Retour</a>  
+
+{% endblock %}

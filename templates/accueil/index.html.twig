@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Petbuddy - Accueil{% endblock %}
+
+{% block body %}
+  <!-- header -->
+      <header style="background-image: url('img/bg.jpg');">
+            <div id="localisationTab">
+              <p>Trouver le Petbuddy le plus proche de chez vous...</p>
+              {# <form class="recherche" action="">
+                <input type="text" placeholder="Taper votre code postal ici" name="recherche" style="margin: 0;">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </form> #}
+            
+            </div>
+      </header>
+        <!-- partie nos prestaion -->
+      <div id="prestation">
+
+          <h2>
+            Nos prestations
+          </h2>
+
+          <div id="row">
+
+                <div class="column" >
+                  <img src="img/chien.jpg" alt="">
+                  <h1>Nos services </h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                
+                <div class="column" >
+                  <img src="img/oiseau.jpg" alt="">
+                  <h1>Nos services </h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              
+                <div class="column">
+                  <img src="img/chat.jpg" alt="">
+                  <h1>Nos services </h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                
+          </div>
+      </div>
+
+      <!-- partie annonces -->
+  
+          <!-- Slideshow container -->
+      <div class="slideshow-container">
+              <div id="annoncestitre">
+                <h5><a href="annonces.php">Parcourir les annonces</a></h5>
+                <p>Les Pet-Sitters disponibles actuellement :</p>
+              </div>
+              <!-- Full-width slides/quotes -->
+              <div class="mySlides">
+                  <div class="row">
+                    <div class="column">
+                      <div class="card">
+                        <img src="img/profil1.jpg" alt="" style="width:100">
+                        <div class="container">
+                          <h3>Lorem Ipsum</h3>
+                          <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. " </p>
+                        </div>
+                        <span>15 €/ Jour</span>
+                        <button class="btn">Consulter</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="mySlides">
+                  <div class="row">
+                    <div class="column">
+                      <div class="card">
+                        <img src="img/profil2.jpeg" alt="" style="width:100">
+                        <div class="container">
+                          <h3>Lorem Ipsum</h3>
+                          <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. " </p>
+                        </div>
+                        <span>15 €/ Jour</span>
+                        <button class="btn">Consulter</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="mySlides">
+                  <div class="row">
+                    <div class="column">
+                      <div class="card">
+                        <img src="img/img.jpeg" alt="" style="width:100">
+                        <div class="container">
+                          <h3>Lorem Ipsum</h3>
+                          <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. " </p>
+                        </div>
+                        <span>15 €/ Jour</span>
+                        <button class="btn"><a href="annonces.php">Consulter</a></button>
+                      </div>
+                    </div>
+                  </div>   
+              </div>
+              <!-- Next/prev buttons -->
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      </div>
+{% endblock %}

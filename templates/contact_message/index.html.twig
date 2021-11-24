@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetBuddy H-Page{% endblock %}
+
+{% block body %}
+        <h1> Pet Buddy Contact Message </h1>
+
+{% for message in app.flashes('announces_add_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_edit_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_delete_success') %}
+<div class="alert alert-success" role="alert">
+  Felicitation!! {{ message }}
+</div>
+{% endfor %}
+
+
+{% if app.user %}
+  {{ dump(app.user.username) }}
+{% endif %}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">N° Utilisateur</th>
+            <th scope="col">N° Annonces</th>
+            <th scope="col">Type d'animal</th>
+            <th scope="col">Message</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contactM in contactMessage %}
+            <tr>
+            <th scope="row"> {{  contactM.id }} </th>
+            <td> {{  contactM.users }} </td>
+            <td> {{  contactM.announces.id }} </td>
+            <td> {{  contactM.animalType }} </td>
+            <td> {{  contactM.message }} </td>
+            <td>
+                <a href="{{ path('contact_contact_edit', {id:  contactM.id}) }}" class="btn btn-secondary btn-sm mr-3">Modifier</a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('contact_contact_delete', {id:  contactM.id}) }}" onclick="return confirm('Do you really want to delete it?')" class="btn btn-secondary btn-sm mr-3">Supprimer</a>
+                {% endif %}
+
+                <a href="{{ path('contact_contact_detail', {id:  contactM.id}) }}" class="btn btn-secondary btn-sm mr-3">Afficher</a>
+            </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <br>
+
+    <a href="{{ path('contact_index') }}" type="button" class="btn btn-warning">Retour</a>  
+
+{% endblock %}

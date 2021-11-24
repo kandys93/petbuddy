@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+        <h1>Profil Pet Sitter/Travelers</h1>
+
+{% for message in app.flashes('announces_add_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_edit_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+{% for message in app.flashes('announces_delete_success') %}
+<div class="alert alert-success" role="alert">
+  Congratulation!! {{ message }}
+</div>
+{% endfor %}
+
+
+{% if app.user %}
+  {{ dump(app.user.username) }}
+{% endif %}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Photo Profil</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Date D'inscription</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+            <th scope="row"> {{ user.id }} </th>
+            <td> {{ user.firstName|capitalize }} </td>
+            <td> {{ user.lastName|capitalize }} </td>
+            <td> {{ user.email }} </td>
+            <td> {{ user.birthDate|date('d-m-Y')}} </td>
+            <td> {{ user.profilImage }} </td>
+            <td> {{ user.city|capitalize }} </td>
+            <td> {{ user.zipCode }} </td>
+            <td> {{ user.reservationAt|date('d-m-Y') }} </td>
+            <td> {{ user.inscriptionAt|date('d-m-Y') }} </td>      
+            <td>
+                <a href="{{ path('users_users_edit', {id: user.id}) }}" class="btn btn-secondary btn-sm mr-3">Modifier</a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('users_users_delete', {id: user.id}) }}" onclick="return confirm('Do you really want to delete it?')" class="btn btn-secondary btn-sm mr-3">Supprimer</a>
+                {% endif %}
+
+                <a href="{{ path('users_users_detail', {id: user.id}) }}" class="btn btn-secondary btn-sm mr-3">Afficher</a>
+            </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <br>
+
+    <a href="{{ path('users_index') }}" type="button" class="btn btn-warning">Retour</a>  
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Form add{% endblock %}
+{#% form_theme formConducteur 'bootstrap_4_layout.html.twig'% #}
+
+
+{% block body %}
+    {% block titre %}{% endblock %}
+        <h1>Details du Profil Membre</h1>
+
+        <p>N° : {{ users.id }} </p>
+        <p>Prenom : {{ users.firstName }} </p>
+        <p>Nom : {{ users.lastName }} </p> 
+        <p>Date de Naissance : {{ users.birthDate|date('d-m-Y') }} </p>
+        <p>Email: {{ users.email }} </p>
+        <p>Image profil: {{ users.profilImage}} </p> 
+        <p>Type d'animal: {{ users.animalType}} </p> 
+        <p>Ville: {{ users.city}} </p> 
+        <p>Code Postal: {{ users.zipCode}} </p> 
+        {# <p>Proprietary: {{ users.availabilityDate}} </p>  #}
+        
+        <br>
+        <a href="{{ path('users_index') }}" type="button" class="btn btn-warning">Retour</a>  
+        
+
+{% endblock %}

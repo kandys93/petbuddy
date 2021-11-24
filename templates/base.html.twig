@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Petbuddy{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            <!-- Lien Fontawesome -->
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+            <!-- CSS général -->
+            <link href="{{ asset('css/style1.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/style2.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <link href="{{ asset('js/script1.js') }}" />
+        {% endblock %}
+    </head>
+    <body>
+
+        <!-- Barre de navigation -->
+        {{ include('_navbar.html.twig') }}
+
+        <div class="content"> <!-- Mise en forme du body, balise ouvrante -->
+            {% block body %}
+                
+
+            {% endblock %} <!-- Ferme le block body -->
+
+            <footer> <!-- Ouverture du footer -->
+                <div id="links">
+                    <a href="{{ path('apropos') }}">A Propos</a>
+                    <a href="{{ path('faq') }}">Centre d'aide</a>
+                    <a href="{{ path('mentionslegales') }}">Mentions légales</a>  
+                </div>
+                <div class="icons">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a href=""><i class="fas fa-envelope"></i></a>
+                </div>
+            </footer> <!-- Fermeture du footer -->
+
+        </div> <!-- Mise en forme du body, balise fermante -->
+    </body>
+</html>

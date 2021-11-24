@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Annonces{% endblock %}
+{#% form_theme formConducteur 'bootstrap_4_layout.html.twig'% #}
+
+
+{% block body %}
+    {% block titre %}{% endblock %}
+        <h1>Details Profil PetBuddy</h1>
+
+        <p>N° Membre: {{ contactMessage.id}} </p>
+        <p>N° Annonces: {{ contactMessage.users }} </p> 
+        <p>Contenu : {{ contactMessage.message }} </p> 
+        <p>Type d'animal : {{ contactMessage.animalType }} </p>
+        
+        
+        <br>
+        <a href="{{ path('contact_index') }}" type="button" class="btn btn-warning">Retour</a>  
+        
+
+{% endblock %}

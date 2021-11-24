@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetBuddy{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        {% for message in app.flashes('users_add_success') %}
+            <div class="alert alert-success" role="alert">
+            Felicitation!! {{ message }}
+    </div>
+        {% endfor %}
+    
+    <h1> Ajouter un Membre </h1> 
+
+    {{ form_start(formUsers)}}
+        <div class="row">
+            {{form_label(formUsers.firstName, 'Prénom')}}
+            {{form_widget(formUsers.firstName )}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.lastName, 'Nom')}}
+            {{form_widget(formUsers.lastName)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.email, 'Email')}}
+            {{form_widget(formUsers.email)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.password, 'Mot de Passe')}}
+            {{form_widget(formUsers.password)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.city, 'City')}}
+            {{form_widget(formUsers.city)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.zipCode, 'Code Postal')}}
+            {{form_widget(formUsers.zipCode)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.birthDate, 'Date de Naissance')}}
+            {{form_widget(formUsers.birthDate)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.animalType, 'Type d\'animal')}}
+            {{form_widget(formUsers.animalType)}}
+        </div>
+        <div class="row">
+            {{form_label(formUsers.agreeTerms)}}
+            {{form_widget(formUsers.agreeTerms)}}
+        <div class="row">
+            {{form_label(formUsers.rgpd)}}
+            {{form_widget(formUsers.rgpd)}}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success btn-sm mb-1">Enregistrer</button>
+    {{ form_end(formUsers)}}
+        <br>
+
+{% endblock %}

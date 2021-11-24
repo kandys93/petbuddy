@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PetBuddy{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        {% for message in app.flashes('contact_add_success') %}
+            <div class="alert alert-success" role="alert">
+            Felicitation!! {{ message }}
+    </div>
+        {% endfor %}
+    
+    <h1> Envoyer un Message</h1> 
+        
+        {{ form_start(formContactMessage) }}
+            <div class="row">
+                {{ form_label(formContactMessage.users, 'Membre N°') }}
+                {{ form_widget(formContactMessage.users) }}
+            </div>                      
+            {# <div class="row">
+                {{form_label(formContactMessage.users.firstName, 'Prénom')}}
+                {{form_widget(formContactMessage.users.firstName)}}
+            </div>                       #}
+            <div class="row">
+                {{form_label(formContactMessage.announces, 'N° Annonce')}}
+                {{form_widget(formContactMessage.announces)}}
+            </div>
+            <div class="row">
+                {{form_label(formContactMessage.message, 'Message')}}
+                {{form_widget(formContactMessage.message)}}
+            </div>
+            <div class="row">
+                {{form_label(formContactMessage.animalType, 'Type D\'animal')}}
+                {{form_widget(formContactMessage.animalType)}}
+            </div>                                            
+            <br>
+            <button type="submit" class="btn btn-success btn-sm mb-1">Enregistrer</button>
+        {{ form_end(formContactMessage) }}
+ 
+
+{% endblock %}
